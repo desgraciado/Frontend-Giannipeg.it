@@ -8,7 +8,7 @@ import {HttpRequestService} from '../http-request.service';
 })
 export class ContactListComponent implements OnInit {
   title = 'GianniPeg';
-  url = 'http://localhost:8080/personen';
+  url = 'https://smtp.maliweb.at/personen';
 
   public data: any;
 
