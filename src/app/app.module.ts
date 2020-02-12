@@ -12,7 +12,6 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { AppComponent } from './app.component';
 import { ContactListComponent } from './contact-list/contact-list.component';
 import { CalendarComponent } from './calendar/calendar.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -23,8 +22,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule,
-    NgbModule
+    AppRoutingModule
   ],
   providers: [HttpRequestService,{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
