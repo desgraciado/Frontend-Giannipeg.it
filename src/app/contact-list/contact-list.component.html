@@ -1,14 +1,14 @@
-<table class="table">
-  <thead>
-  <tr>
-    <th>Name</th>
-    <th>Vorname</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let c of data">
-    <td>{{c.nachname}}</td>
-    <td>{{c.vorname}}</td>
-  </tr>
-  </tbody>
-</table>
+<p-table [value]="data">
+  <ng-template pTemplate="header">
+      <tr>
+          <th>Name</th>
+          <th>Vorname</th>
+      </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-c>
+      <tr>
+        <td>{{c.nachname}}</td>
+        <td>{{c.vorname}}</td>
+      </tr>
+  </ng-template>
+</p-table>
