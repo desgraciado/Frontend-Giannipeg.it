@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpRequestService} from '../http-request.service';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-contact-list',
@@ -8,7 +9,8 @@ import {HttpRequestService} from '../http-request.service';
 })
 export class ContactListComponent implements OnInit {
   title = 'GianniPeg';
-  url = 'https://smtp.maliweb.at/personen';
+  //url = 'https://smtp.maliweb.at/psn/personen';
+  url = '/psn/personen';
 
   public data: any;
 
@@ -17,7 +19,7 @@ export class ContactListComponent implements OnInit {
 
   ngOnInit() {
     this.api
-      .getPersonen(this.url)
+      .getPersonen(environment.baseUrl + this.url)
       .subscribe(
         data => {
           console.log(data);
