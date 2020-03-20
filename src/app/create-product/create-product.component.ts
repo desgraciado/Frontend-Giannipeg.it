@@ -19,43 +19,34 @@ export class CreateProductComponent implements OnInit {
 
     title = 'ImageUploaderFrontEnd';
     url = '/check/upload';
-    public selectedFile;
-    public event1;
-    imgURL: any;
-    receivedImageData: any;
-    base64Data: any;
-    convertedImage: any;
-
-    public  onFileChanged(event) {
-      console.log(event);
-      this.selectedFile = event.target.files[0];
-
-      // Below part is used to display the selected image
-      let reader = new FileReader();
-      reader.readAsDataURL(event.target.files[0]);
-      reader.onload = (event2) => {
-        this.imgURL = reader.result;
-    };
-
-   }
+    uploadedFiles: any[] = [];
 
 
-   // This part is for uploading
-   onUpload() {
-    const uploadData = new FormData();
-    uploadData.append('myFile', this.selectedFile, this.selectedFile.name);
+    myUploader(event):void{
+      console.log('My File upload',event);
+      if(event.files.length == 0){
+        console.log('No file selected.');
+        return;
+      }
+      var fileToUpload = event.files[0];
+      let input = new FormData();
+      input.append("myFile", fileToUpload);
 
+      this.httpClient
+        .post(environment.baseUrl + this.url, input)
+        .subscribe(res => {
+          console.log(res);
+        });
+    }
 
-    this.httpClient.post(environment.baseUrl + this.url, uploadData)
-    .subscribe(
-                 res => {
-                        console.log("Received ImageData: ",res);
-                         this.receivedImageData = res;
-                         this.base64Data = this.receivedImageData.pic;
-                         this.convertedImage = 'data:image/jpeg;base64,' + this.base64Data; },
-                 err => console.log('Error Occured during saving: ',err)
-              );
+    // upload completed event
+    onCUpload(event): void {
+      for (const file of event.files) {
+        this.uploadedFiles.push(file);
+      }
+    }
 
-
-   }
+    onBeforeSend(event): void {
+      //event.xhr.setRequestHeader('Authorization', 'Bearer ' + abp.auth.getToken());
+    }
   }

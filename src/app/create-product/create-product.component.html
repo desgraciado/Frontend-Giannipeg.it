@@ -1,7 +1,7 @@
 <h3>Image Uploading Module</h3>
 
 
-<div>
+<!-- <div>
     <input type="file" (change)="onFileChanged($event)">
 
     <img [src]="imgURL" height="200" *ngIf="imgURL">
@@ -14,4 +14,32 @@
 Received Image:
 
 {{ receivedImageData['pic'] | json}}
-<img [src]="convertedImage" >
+<img [src]="convertedImage" > -->
+
+<p-fileUpload
+
+name="myFile[]"
+
+maxFileSize="1000000000"
+
+customUpload="true"
+
+auto="auto"
+
+(uploadHandler)="myUploader($event)"
+
+(onUpload)="onCUpload($event)"
+
+(onBeforeSend)="onBeforeSend($event)">
+
+<ng-template pTemplate="content">
+
+   <ul *ngIf="uploadedFiles.length">
+
+     <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+
+   </ul>
+
+   </ng-template>
+
+</p-fileUpload>
