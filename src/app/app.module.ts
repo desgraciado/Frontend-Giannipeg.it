@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
@@ -13,7 +14,7 @@ import { CalendarComponent } from './calendar/calendar.component';
 import { CreateProductComponent } from './create-product/create-product.component';
 
 import { TableModule } from 'primeng/table';
-import {FileUploadModule} from 'primeng/fileupload';
+import { FileUploadModule } from 'primeng/fileupload';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import {FileUploadModule} from 'primeng/fileupload';
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     TableModule,
     FileUploadModule

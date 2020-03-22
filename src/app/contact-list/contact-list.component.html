@@ -1,14 +1,32 @@
+<form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="surname">
+      Surname
+    </label>
+    <input id="surname" type="text" formControlName="surname">
+  </div>
+
+  <div>
+    <label for="givenname">
+      Given Name
+    </label>
+    <input id="givenname" type="text" formControlName="givenname">
+  </div>
+
+  <button class="button" type="submit" [disabled]="!contactForm.valid">Submit</button>
+</form>
+
 <p-table [value]="data">
   <ng-template pTemplate="header">
       <tr>
-          <th>Name</th>
-          <th>Vorname</th>
+          <th>Surname</th>
+          <th>Given Name</th>
       </tr>
   </ng-template>
   <ng-template pTemplate="body" let-c>
       <tr>
-        <td>{{c.nachname}}</td>
-        <td>{{c.vorname}}</td>
+        <td>{{c.surname}}</td>
+        <td>{{c.givenname}}</td>
       </tr>
   </ng-template>
 </p-table>
