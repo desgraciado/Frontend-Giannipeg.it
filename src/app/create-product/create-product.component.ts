@@ -14,7 +14,7 @@ import { environment } from '../../environments/environment';
 
 export class CreateProductComponent implements OnInit {
   title = 'ImageUploaderFrontEnd';
-  url = '/check/upload';
+  url = '/image/upload';
   uploadedFiles: any[] = [];
 
 
