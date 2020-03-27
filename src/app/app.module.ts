@@ -15,6 +15,10 @@ import { CreateProductComponent } from './create-product/create-product.componen
 
 import { TableModule } from 'primeng/table';
 import { FileUploadModule } from 'primeng/fileupload';
+import { SignUpFormComponent } from './sign-up-form/sign-up-form.component';
+import { FileUploadComponent } from './file-upload/file-upload.component';
+import { ProgressBarModule } from 'primeng/progressbar';
+import { ProgressComponent } from './shared/progress/progress.component';
 
 
 @NgModule({
@@ -22,7 +26,10 @@ import { FileUploadModule } from 'primeng/fileupload';
     AppComponent,
     ContactListComponent,
     CalendarComponent,
-    CreateProductComponent
+    CreateProductComponent,
+    SignUpFormComponent,
+    FileUploadComponent,
+    ProgressComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +39,8 @@ import { FileUploadModule } from 'primeng/fileupload';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     TableModule,
-    FileUploadModule
+    FileUploadModule,
+    ProgressBarModule
   ],
   providers: [
     HttpRequestService,

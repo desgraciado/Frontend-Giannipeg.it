@@ -1,0 +1,7 @@
+:host ::ng-deep .ui-progressbar-label {
+   color: black;
+}
+
+:host ::ng-deep .ui-progressbar-value {
+   background: lightblue;
+}
