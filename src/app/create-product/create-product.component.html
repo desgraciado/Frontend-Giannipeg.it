@@ -1,14 +1,24 @@
 <h3>Image Uploading Module</h3>
 
+<label>
+  Name:
+  <input type="text" [formControl]="title">
+</label>
+
+<p>
+  Value: {{ title.value }}
+</p>
+
 <p-fileUpload
-  name="myFile[]"
+  multiple="multiple"
+  name="files[]"
   maxFileSize="1000000000"
   customUpload="true"
   (uploadHandler)="myUploader($event)"
   (onUpload)="onCUpload($event)"
   (onBeforeSend)="onBeforeSend($event)">
 
-  <ng-template pTemplate="content">
+  <ng-template pTemplate="content" required>
      <ul *ngIf="uploadedFiles.length">
        <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
      </ul>
