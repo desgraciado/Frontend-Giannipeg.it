@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { HttpRequestService } from '../http-request.service';
+import { HttpRequestService } from '../service/http-request.service';
 import { environment } from '../../environments/environment';
 import { Contact } from '../dto/contact';
 

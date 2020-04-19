@@ -1,19 +1,13 @@
 import {Component, OnInit} from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { Validators, AbstractControl } from '@angular/forms';
+import { HttpRequestService } from '../service/http-request.service';
 
 
 
 // import { ImageData } from './ImageModel';
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type':  'application/xml',
-    'Authorization': 'jwt-token'
-  })
-};
+
 
 @Component({
   selector: 'app-create-product',
@@ -24,40 +18,37 @@ const httpOptions = {
 
 export class CreateProductComponent implements OnInit {
   heading = 'ImageUploaderFrontEnd';
-  url = '/image/upload';
+  //url = '/image/multipleUpload';
   uploadedFiles: any[] = [];
   title = new FormControl('');
 
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private api: HttpRequestService) { }
   ngOnInit() {}
 
   myUploader(event):void{
-    console.log('My Email upload',this.title.value);
+    const formData: FormData = new FormData();
+    for (let i of event.files) {
+      console.log(i); // "4", "5", "6"
+      formData.append('file', i);
+    }
+    formData.append( 'title', this.title.value);
     console.log('My File upload',event);
-    console.log("Variable name: ",this.title.value);
+    console.log("Title: ",this.title.value);
+
     if(event.files.length == 0){
       console.log('No file selected.');
       return;
     }
-    for (let j = 0; j < event.files.length; j++) {
-      let data = new FormData();
-      let fileItem = event.files[j];
-      console.log(fileItem.name);
-      data.append('image', fileItem);
-      data.append( 'email', this.title.value);
-      this.httpClient
-      .post(environment.baseUrl + this.url, data)
-      .subscribe(res => {
-        console.log(res);
-      });
-    }
+    this.api.addImages(formData).subscribe(res => {
+      console.log("Images uploaded! : ",res);
+    });
   }
 
   // upload completed event
   onCUpload(event): void {
     for (const file of event.files) {
-      this.uploadedFiles.push(file);
+      //this.uploadedFiles.push(file);
     }
   }
 

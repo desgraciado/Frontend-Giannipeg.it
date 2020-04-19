@@ -4,13 +4,14 @@ import { HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { map } from 'rxjs/operators';
-import { Contact } from './dto/contact';
-import { environment } from '../environments/environment';
+import { Contact } from '../dto/contact';
+import { environment } from '../../environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type':  'application/json',
-    'Authorization': 'my-auth-token'
+    'Content-Type': 'application/json',
+    'Accept': 'application/json',
+    'Authorization': 'jwt-token'
   })
 };
 
@@ -19,6 +20,8 @@ const httpOptions = {
 })
 export class HttpRequestService {
   baseUrl = environment.baseUrl;
+  imageModelUrl = '/image';
+  baseImageUrl = '/baseimage';
 
   constructor(private http: HttpClient) { }
 
@@ -28,5 +31,13 @@ export class HttpRequestService {
 
   getContacts () {
     return this.http.get<Contact[]>(this.baseUrl + '/persons');
+  }
+
+  addImages (data:FormData): Observable<any> {
+    return this.http.post<any>(environment.baseUrl + this.baseImageUrl + '/upload', data);
+  }
+
+  getImages () {
+    return this.http.get<any[]>(this.baseUrl + this.baseImageUrl + '/getimages');
   }
 }

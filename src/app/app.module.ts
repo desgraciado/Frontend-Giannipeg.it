@@ -7,7 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
-import { HttpRequestService } from './http-request.service';
+import { HttpRequestService } from './service/http-request.service';
 import { AppComponent } from './app.component';
 import { ContactListComponent } from './contact-list/contact-list.component';
 import { CalendarComponent } from './calendar/calendar.component';
@@ -19,6 +19,7 @@ import { SignUpFormComponent } from './sign-up-form/sign-up-form.component';
 import { FileUploadComponent } from './file-upload/file-upload.component';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { ProgressComponent } from './shared/progress/progress.component';
+import { DataListComponent } from './data-list/data-list.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { ProgressComponent } from './shared/progress/progress.component';
     CreateProductComponent,
     SignUpFormComponent,
     FileUploadComponent,
-    ProgressComponent
+    ProgressComponent,
+    DataListComponent
   ],
   imports: [
     BrowserModule,

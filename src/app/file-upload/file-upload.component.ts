@@ -17,7 +17,7 @@ import { ProgressComponent } from '../shared/progress/progress.component';
 export class FileUploadComponent implements ControlValueAccessor {
   @Input() progress;
   onChange: Function;
-  private file: File | null = null;
+  file: File | null = null;
 
   @HostListener('change', ['$event.target.files']) emitFiles( event: FileList ) {
     const file = event && event.item(0);
